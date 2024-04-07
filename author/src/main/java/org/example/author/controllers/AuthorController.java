@@ -22,9 +22,9 @@ public class AuthorController {
     RestTemplate restTemplate = new RestTemplate();
 
     @GetMapping("/getBooksByAuthorId/{authorId}")
-//    @Retry(name = "retry1")
+//    @Retry(name = "retry1") // d
     @RateLimiter(name = "ratelimiter1")
-//    @TimeLimiter(name = "timeLimiter1")
+//    @TimeLimiter(name = "limiter1")
     ResponseEntity getBooksByAuthorId(@PathVariable Long authorId){
         System.out.println("test");
         Object list = restTemplate.getForObject("http://localhost:8801/books/"+authorId.toString(), List.class);
